@@ -4,22 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Pokémon</title>
 </head>
 <body>
-    <h1>Oefenen met api's</h1>
-    <input type="text" placeholder="Search pokemon" name="" id="">
-    <button>Search</button>
-    <h2>Name: <span>  </span> </h2>
-    <img src="" alt="">
-    
+    <div class="container">
+        <h1>Pokémon</h1>        
+        <div class="searching">
+            <input class="pokemon-input" type="text" placeholder="Search Pokémon" name="" id="">
+            <button class="search-button btn btn-info">Search</button>
+        </div>
+        
+        <div class="pokemon-card">
+            <h2>Name: <span class="pokemon-name">  </span> </h2>
+            <ul class="pokemon-type"></ul>
+            <img class="pokemon-front-image" src="" alt="">
+        </div>
+    </div>
 
     <script>
-        fetch ("https://pokeapi.co/api/v2/pokemon/pikachu")
-            .then(result => result.json())
-            .then(pokemon => {
-                console.log(pokemon);
-            })
+
+        document.querySelector('.search-button')
+                .addEventListener('click', function(){
+                    document.querySelector('.pokemon-type').innerHTML = '';
+                    let pokeName = document.querySelector('.pokemon-input').value;
+                    fetch ('https://pokeapi.co/api/v2/pokemon/' + pokeName)
+                        .then(result => result.json())
+                        .then(pokemon => {
+                            console.log(pokemon);
+                            document.querySelector('.pokemon-name').innerHTML = pokemon.name;
+                            document.querySelector('.pokemon-front-image').src = pokemon.sprites.versions['generation-v']['black-white'].animated.front_default;
+                            document.querySelector('.pokemon-front-image').style.width = pokemon.height * 10 + 'px';
+                            
+                            if (pokemon.types.length == 1)
+                            {
+                                document.querySelector('.pokemon-type').innerHTML += '<li class=" ' + pokemon.types[0].type.name +'">' + pokemon.types[0].type.name + '</li>';
+                            }else if(pokemon.types.length == 2)
+                            {
+                                document.querySelector('.pokemon-type').innerHTML += '<li class=" ' + pokemon.types[0].type.name +'">' + pokemon.types[0].type.name + '</li>';
+                                document.querySelector('.pokemon-type').innerHTML += '<li class=" ' + pokemon.types[1].type.name +'">' + pokemon.types[1].type.name + '</li>';
+                            }
+                        })
+                })
+        document.querySelector('.pokemon-input')
+                .addEventListener('keyup', function(event){
+                    if(event.keyCode === 13){
+                        document.querySelector('.search-button').click();
+                    }
+                })
+
+
     </script>
 </body>
 </html>
