@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    margin: auto;
+    width: 70%;
+}
+
+h1{
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 50px;
+}
+
+input{
+    width: 90%;
+    height: 39px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.search-button{
+    height: 12px;
+    height: 100%;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searching{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+ul{
+    list-style-type: none;
+    margin: 20px;
+}
+
+li{
+    display: inline;
+    padding: 5px;
+}
+
+/* Types: */
+
+.normal{
+    background-color: gray;
+    width: 10px;
+    height: 100%;
+}
+
+.fire{
+    background-color: red;
+}
+
+.water{
+    background-color: blue;
+}
+
+.electric{
+    background-color: yellow;
+}
+
+.grass{
+    background-color: greenyellow;
+}
+
+.ice{
+    background-color: aqua;
+}
+
+.fighting{
+    background-color: brown;
+}
+
+.poison{
+    background-color: purple;
+}
+
+.ground{
+    background-color: sandybrown;
+}
+
+.flying{
+    background-color: lightblue;
+}
+
+.psychic{
+    background-color: magenta;
+}
+
+.bug{
+    background-color: darkgreen;
+}
+
+.rock{
+    background-color: darkgray;
+}
+
+.ghost{
+    background-color: darkviolet;
+}
+
+.dragon{
+    background-color: darkorange;
+}
+
+.dark{
+    background-color: black;
+}
+
+.steel{
+    background-color: silver;
+}
+
+.fairy{
+    background-color: lightpink;
+}
+
