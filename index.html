@@ -18,7 +18,7 @@
             </div>
         </header>
 
-        <main>
+        <main id="pokemon-main">
         <div class="pokemon-card">
             <div class="info">
                 <h2 class="pokemon-name"></h2>
@@ -26,17 +26,41 @@
                 <ul class="pokemon-type"></ul>
             </div>
 
-
-            
             <img class="pokemon-front-image" src="" alt="">
         </div>
+    
+        <div class="stats" id="stats">
+            <div class="stat">
+            <div class="stat-name">HP</div>
+            <div class="stat-value" id="hp"></div>
+            </div>
+            <div class="stat">
+            <div class="stat-name">Attack</div>
+            <div class="stat-value" id="attack"></div>
+            </div>
+            <div class="stat">
+            <div class="stat-name">Defense</div>
+            <div class="stat-value" id="defense"></div>
+            </div>
+            <div class="stat">
+            <div class="stat-name">Special Attack</div>
+            <div class="stat-value" id="special-attack"></div>
+            </div>
+            <div class="stat">
+            <div class="stat-name">Special Defense</div>
+            <div class="stat-value" id="special-defense"></div>
+            </div>
+            <div class="stat">
+            <div class="stat-name">Speed</div>
+            <div class="stat-value" id="speed"></div>
+            </div>
+        </div>
+      
+        </main>
     </div>
-
-    </main>
     <footer>
         <!-- <p>© 2021 Pokémon. © 1995-2021 Nintendo/Creatures Inc./GAME FREAK inc. TM, ® and Pokémon character names are trademarks of Nintendo.</p> -->
     </footer>
-
     <script>
         document.querySelector('.search-button')
                 .addEventListener('click', function(){
@@ -49,8 +73,9 @@
                             document.querySelector('.pokemon-name').innerHTML = 'Name: ' + pokemon.name;
                             document.querySelector('.pokemon-id').innerHTML = 'Pokedex id: ' + pokemon.id;
                             document.querySelector('.pokemon-front-image').src = pokemon.sprites.versions['generation-v']['black-white'].animated.front_default;
+
+
                             // document.querySelector('.pokemon-front-image').style.width = pokemon.height * 10 + 'px';
-                            
                             if (pokemon.types.length == 1)
                             {
                                 document.querySelector('.pokemon-type').innerHTML += '<li class=" ' + pokemon.types[0].type.name +'">' + pokemon.types[0].type.name + '</li>';
@@ -58,6 +83,38 @@
                             {
                                 document.querySelector('.pokemon-type').innerHTML += '<li class=" ' + pokemon.types[0].type.name +'">' + pokemon.types[0].type.name + '</li>';
                                 document.querySelector('.pokemon-type').innerHTML += '<li class=" ' + pokemon.types[1].type.name +'">' + pokemon.types[1].type.name + '</li>';
+                            }
+
+                            // stats
+                            const stats = document.getElementById('stats');
+                            document.getElementById('hp').innerHTML = pokemon.stats[5].base_stat;
+                            document.getElementById('attack').innerHTML = pokemon.stats[4].base_stat;
+                            document.getElementById('defense').innerHTML = pokemon.stats[3].base_stat;
+                            document.getElementById('special-attack').innerHTML = pokemon.stats[2].base_stat;
+                            document.getElementById('special-defense').innerHTML = pokemon.stats[1].base_stat;
+                            document.getElementById('speed').innerHTML = pokemon.stats[0].base_stat;
+
+
+                            
+                        })
+
+                        console.log(pokemon)
+                        .catch(err => {
+                            console.log(err);
+                                // Get the div element with the specified id
+                                var divElement = document.getElementById('pokemon-main');
+
+                                // Loop through all child elements of the div element
+                                for (var i = 0; i < divElement.children.length; i++) {
+                                    // Set the display property to 'none'
+                                    divElement.children[i].style.display = 'none';
+                                }
+                        })
+                        .then(pokemon => {
+                            // Make all elements reappear
+                            var elements = document.querySelectorAll('*');
+                            for (var i = 0; i < elements.length; i++) {
+                                elements[i].style.display = 'flex';
                             }
                         })
                 })
@@ -68,6 +125,5 @@
                     }
                 })
     </script>
-
 </body>
 </html>
