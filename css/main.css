@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *{
     margin: 0px;
     padding: 0px;
@@ -53,6 +57,10 @@ input{
     align-items: center;
 }
 
+i{
+    font-size: 200px;
+
+}
 
 
 /* card styling */
@@ -169,3 +177,30 @@ li{
     background-color: lightpink;
 }
 
+.stats {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .stat {
+    width: 150px;
+    height: 100px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .stat-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .stat-value {
+    font-size: 36px;
+  }
+  
