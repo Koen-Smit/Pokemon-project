@@ -16,6 +16,7 @@
 
 header{
     padding: 20px;
+    text-align: center;
 }
 
 h1{
@@ -177,10 +178,17 @@ li{
     background-color: lightpink;
 }
 
-.stats {
-    display: none;
+.statsDirection{
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    flex-direction: row;
+    margin-bottom: 100px;
+}
+
+#stats {
+    display: none;
+
   }
   
   .stat {
@@ -204,3 +212,20 @@ li{
     font-size: 36px;
   }
   
+
+  /* -----------------------pokedex----------------------- */
+  .pokedexLink{
+      text-decoration: none;
+      color: black;
+  }
+
+  .pokedexLink:hover{
+    text-decoration: none;
+    color: red;
+}
+
+.pokedex-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr
+}
